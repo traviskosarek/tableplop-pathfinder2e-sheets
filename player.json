@@ -108,14 +108,15 @@
       "type": "number",
       "hidden": true,
       "parent": "hit-points",
-      "local": true
+      "local": false
     },
     "hit-points-class": {
       "value": 8,
       "section": "info",
       "type": "number",
       "hidden": true,
-      "parent": "hit-points"
+      "parent": "hit-points",
+      "local": false
     },
     "toughness": {
       "value": false,
@@ -130,15 +131,16 @@
       "type": "number",
       "hidden": true,
       "parent": "hit-points",
-      "expression": "hit-points-ancestry + (level * (hit-points-class + constitution + (toughness ? 1 : 0)))"
+      "expression": "hit-points-ancestry + (level * (hit-points-class + constitution + (toughness ? 1 : 0)))",
+      "local": false
     },
     "hit-points-temporary": {
       "value": 0,
       "section": "info",
       "type": "number",
-      "local": true,
       "hidden": true,
-      "parent": "hit-points"
+      "parent": "hit-points",
+      "local": true
     },
     "ac": {
       "value": 15,
