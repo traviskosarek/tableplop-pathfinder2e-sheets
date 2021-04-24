@@ -1250,7 +1250,7 @@
     },
     {
       "name": "example-spell-save",
-      "message": "◆◆ Spell Name\nSaving Throw - Basic Reflex DC {spell-dc}\nCritical Success - probably nothing happens\nSuccess - maybe something happens\nFailure - good things happen\nCritical Failure - amazing things happen",
+      "message": "◆◆ Spell Name\nSaving Throw - Basic Reflex DC {spell-dc}\n\nCritical Success - probably nothing happens\nSuccess - maybe something happens\nFailure - good things happen\nCritical Failure - amazing things happen",
       "section": "spells"
     }
   ]
