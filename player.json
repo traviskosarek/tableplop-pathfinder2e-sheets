@@ -1224,12 +1224,12 @@
   "appearances": [],
   "savedMessages": [
     {
-      "name": "example-melee-weapon",
+      "name": "example-melee-attack",
       "message": "◆ Strike - Weapon Name\nTo Hit: {1d20 + trained-proficiency + strength}\nDamage: {1d6 + strength} slashing",
       "section": "actions"
     },
     {
-      "name": "example-ranged-weapon",
+      "name": "example-ranged-attack",
       "message": "◆ Strike - Weapon Name\nTo Hit: {1d20 + trained-proficiency + dexterity}\nDamage: {1d6 + strength} piercing",
       "section": "actions"
     },
@@ -1244,12 +1244,12 @@
       "section": "actions"
     },
     {
-      "name": "example-attack-spell",
+      "name": "example-spell-attack",
       "message": "◆◆ Spell Name\nTo Hit - {1d20 + spell-attack}\nDamage - {1d4 + intelligence} fire",
       "section": "spells"
     },
     {
-      "name": "example-save-spell",
+      "name": "example-spell-save",
       "message": "◆◆ Spell Name\nSaving Throw - Basic Reflex DC {spell-dc}\nCritical Success - probably nothing happens\nSuccess - maybe something happens\nFailure - good things happen\nCritical Failure - amazing things happen",
       "section": "spells"
     }
