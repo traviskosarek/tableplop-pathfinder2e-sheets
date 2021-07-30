@@ -1,1257 +1,3055 @@
 {
-  "stats": {
-    "initiative": {
-      "value": 3,
-      "type": "number",
-      "section": "hero",
-      "roll": "!r initiative = 1d20 + perception",
-      "expression": "perception"
-    },
-    "hero-points": {
-      "value": 1,
-      "type": "checkboxes",
-      "section": "hero"
-    },
-    "hero-points-max": {
-      "value": 3,
-      "type": "number",
-      "hidden": true,
-      "parent": "hero-points"
-    },
-    "strength": {
-      "expression": "floor ((strength-score - 10) / 2)",
-      "type": "ability",
-      "value": 0,
-      "section": "abilities",
-      "roll": "Strength check: {1d20 + strength}"
-    },
-    "strength-score": {
-      "parent": "strength",
-      "value": 10,
-      "type": "number",
-      "hidden": true
-    },
-    "dexterity": {
-      "expression": "floor ((dexterity-score - 10) / 2)",
-      "type": "ability",
-      "value": 0,
-      "section": "abilities",
-      "roll": "Dexterity check: {1d20 + dexterity}"
-    },
-    "dexterity-score": {
-      "parent": "dexterity",
-      "value": 10,
-      "type": "number",
-      "hidden": true
-    },
-    "constitution": {
-      "expression": "floor ((constitution-score - 10) / 2)",
-      "type": "ability",
-      "value": 0,
-      "section": "abilities",
-      "roll": "Constitution check: {1d20 + constitution}"
-    },
-    "constitution-score": {
-      "parent": "constitution",
-      "value": 10,
-      "type": "number",
-      "hidden": true
-    },
-    "intelligence": {
-      "expression": "floor ((intelligence-score - 10) / 2)",
-      "type": "ability",
-      "value": 0,
-      "section": "abilities",
-      "roll": "Intelligence check: {1d20 + intelligence}"
-    },
-    "intelligence-score": {
-      "parent": "intelligence",
-      "value": 10,
-      "type": "number",
-      "hidden": true
-    },
-    "wisdom": {
-      "expression": "floor ((wisdom-score - 10) / 2)",
-      "type": "ability",
-      "value": 0,
-      "section": "abilities",
-      "roll": "Wisdom check: {1d20 + wisdom}"
-    },
-    "wisdom-score": {
-      "parent": "wisdom",
-      "value": 10,
-      "type": "number",
-      "hidden": true
-    },
-    "charisma": {
-      "expression": "floor ((charisma-score - 10) / 2)",
-      "type": "ability",
-      "value": 0,
-      "section": "abilities",
-      "roll": "Charisma check: {1d20 + charisma}"
-    },
-    "charisma-score": {
-      "parent": "charisma",
-      "value": 10,
-      "type": "number",
-      "hidden": true
-    },
-    "hit-points": {
-      "value": 14,
-      "section": "info",
-      "type": "health",
-      "local": false
-    },
-    "hit-points-ancestry": {
-      "value": 6,
-      "section": "info",
-      "type": "number",
-      "hidden": true,
-      "parent": "hit-points",
-      "local": false
-    },
-    "hit-points-class": {
-      "value": 8,
-      "section": "info",
-      "type": "number",
-      "hidden": true,
-      "parent": "hit-points",
-      "local": false
-    },
-    "toughness": {
-      "value": false,
-      "section": "info",
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "hit-points"
-    },
-    "hit-points-maximum": {
-      "value": 14,
-      "section": "info",
-      "type": "number",
-      "hidden": true,
-      "parent": "hit-points",
-      "expression": "hit-points-ancestry + (level * (hit-points-class + constitution + (toughness ? 1 : 0)))",
-      "local": false
-    },
-    "hit-points-temporary": {
-      "value": 0,
-      "section": "info",
-      "type": "number",
-      "hidden": true,
-      "parent": "hit-points",
-      "local": true
-    },
-    "ac": {
-      "value": 15,
-      "section": "info",
-      "type": "number",
-      "expression": "15 + (raise-a-shield ? shield-ac : 0)",
-      "local": false
-    },
-    "speed": {
-      "value": 30,
-      "section": "info",
-      "type": "number"
-    },
-    "passive-stealth": {
-      "value": 10,
-      "type": "number",
-      "section": "info",
-      "expression": "10 + stealth"
-    },
-    "passive-perception": {
-      "value": 13,
-      "type": "number",
-      "section": "info",
-      "expression": "10 + perception"
-    },
-    "class-dc": {
-      "value": 13,
-      "type": "skill4",
-      "section": "info",
-      "subtitle": "Str",
-      "expression": "10 + key-ability-modifier + (class-dc-trained ? 2 + level : 0) + (class-dc-expert ? 2 : 0) + (class-dc-master ? 2: 0) + (class-dc-legendary ? 2 : 0)"
-    },
-    "class-dc-trained": {
-      "value": true,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "class-dc-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "class-dc-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "class-dc-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "key-ability-strength": {
-      "value": true,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "key-ability-dexterity": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "key-ability-constitution": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "key-ability-intelligence": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "key-ability-wisdom": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "key-ability-charisma": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "key-ability-modifier": {
-      "value": 0,
-      "type": "number",
-      "section": "info",
-      "expression": "(key-ability-strength ? strength : (key-ability-dexterity ? dexterity : (key-ability-constitution ? constitution : (key-ability-intelligence ? intelligence : (key-ability-wisdom ? wisdom : (key-ability-charisma ? charisma : 0))))))",
-      "hidden": true,
-      "parent": "class-dc"
-    },
-    "trained-proficiency": {
-      "value": 3,
-      "type": "number",
-      "section": "info",
-      "expression": "level + 2",
-      "hidden": true
-    },
-    "expert-proficiency": {
-      "value": 5,
-      "type": "number",
-      "section": "info",
-      "expression": "trained-proficiency + 2",
-      "hidden": true
-    },
-    "master-proficiency": {
-      "value": 7,
-      "type": "number",
-      "section": "info",
-      "expression": "expert-proficiency + 2",
-      "hidden": true
-    },
-    "legendary-proficiency": {
-      "value": 9,
-      "type": "number",
-      "section": "info",
-      "expression": "master-proficiency + 2",
-      "hidden": true
-    },
-    "raise-a-shield": {
-      "value": false,
-      "type": "checkbox",
-      "section": "shield"
-    },
-    "shield-ac": {
-      "value": 0,
-      "type": "number",
-      "section": "shield"
-    },
-    "shield-hardness": {
-      "value": 0,
-      "type": "number",
-      "section": "shield"
-    },
-    "shield-health": {
-      "value": 0,
-      "type": "health",
-      "section": "shield"
-    },
-    "shield-health-maximum": {
-      "value": 0,
-      "type": "number",
-      "hidden": true,
-      "parent": "shield-health"
-    },
-    "level": {
-      "value": 1,
-      "section": "details",
-      "type": "number"
-    },
-    "experience": {
-      "value": 0,
-      "section": "details",
-      "type": "number"
-    },
-    "ancestry": {
-      "value": "",
-      "section": "details",
-      "type": "text"
-    },
-    "background": {
-      "value": "",
-      "section": "details",
-      "type": "text"
-    },
-    "class": {
-      "value": "",
-      "section": "details",
-      "type": "text"
-    },
-    "size": {
-      "value": "",
-      "type": "text",
-      "section": "details"
-    },
-    "alignment": {
-      "value": "",
-      "type": "text",
-      "section": "details"
-    },
-    "traits": {
-      "value": "Humanoid",
-      "type": "text",
-      "section": "details"
-    },
-    "deity": {
-      "value": "",
-      "type": "text",
-      "section": "details"
-    },
-    "languages": {
-      "value": "Common",
-      "type": "text",
-      "section": "details"
-    },
-    "spell-attack": {
-      "value": 0,
-      "type": "skill4",
-      "section": "spells",
-      "expression": "spell-key-ability-modifier + (spell-attack-trained ? 2 + level : 0) + (spell-attack-expert ? 2 : 0) + (spell-attack-master ? 2 : 0) + (spell-attack-legendary ? 2 : 0)",
-      "subtitle": "Cha"
-    },
-    "spell-attack-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-attack-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-attack-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-attack-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-key-ability-strength": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-key-ability-dexterity": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-key-ability-constitution": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-key-ability-intelligence": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-key-ability-wisdom": {
-      "value": false,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-key-ability-charisma": {
-      "value": true,
-      "type": "checkbox",
-      "section": "info",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-key-ability-modifier": {
-      "value": 0,
-      "type": "number",
-      "section": "info",
-      "expression": "(spell-key-ability-strength ? strength : (spell-key-ability-dexterity ? dexterity : (spell-key-ability-constitution ? constitution : (spell-key-ability-intelligence ? intelligence : (spell-key-ability-wisdom ? wisdom : (spell-key-ability-charisma ? charisma : 0))))))",
-      "hidden": true,
-      "parent": "spell-attack"
-    },
-    "spell-dc": {
-      "value": 10,
-      "type": "number",
-      "section": "spells",
-      "expression": "10 + spell-attack"
-    },
-    "first-level-spell-slots": {
-      "type": "checkboxes",
-      "max": 2,
-      "value": 0,
-      "section": "spells"
-    },
-    "first-level-spell-slots-max": {
-      "type": "number",
-      "value": 2,
-      "parent": "first-level-spell-slots",
-      "hidden": true
-    },
-    "perception": {
-      "value": 3,
-      "type": "skill4",
-      "section": "perception",
-      "expression": "wisdom + (perception-trained ? 2 + level : 0) + (perception-expert ? 2 : 0) + (perception-master ? 2 : 0) + (perception-legendary ? 2 : 0)",
-      "subtitle": "Wis",
-      "roll": "Perception check: {1d20 + perception}"
-    },
-    "perception-trained": {
-      "value": true,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "perception"
-    },
-    "perception-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "perception"
-    },
-    "perception-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "perception"
-    },
-    "perception-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "perception"
-    },
-    "senses": {
-      "value": "",
-      "type": "text",
-      "section": "perception"
-    },
-    "acrobatics": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "dexterity + (acrobatics-trained ? 2 + level : 0) + (acrobatics-expert ? 2 : 0) + (acrobatics-master ? 2 : 0) + (acrobatics-legendary ? 2 : 0)",
-      "subtitle": "Dex",
-      "roll": "Acrobatics check: {1d20 + acrobatics}"
-    },
-    "acrobatics-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "acrobatics"
-    },
-    "acrobatics-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "acrobatics"
-    },
-    "acrobatics-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "acrobatics"
-    },
-    "acrobatics-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "acrobatics"
-    },
-    "arcana": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "intelligence + (arcana-trained ? 2 + level : 0) + (arcana-expert ? 2 : 0) + (arcana-master ? 2 : 0) + (arcana-legendary ? 2 : 0)",
-      "subtitle": "Int",
-      "roll": "Arcana check: {1d20 + arcana}"
-    },
-    "arcana-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "arcana"
-    },
-    "arcana-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "arcana"
-    },
-    "arcana-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "arcana"
-    },
-    "arcana-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "arcana"
-    },
-    "athletics": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "strength + (athletics-trained ? 2 + level : 0) + (athletics-expert ? 2 : 0) + (athletics-master ? 2 : 0) + (athletics-legendary ? 2 : 0)",
-      "subtitle": "Str",
-      "roll": "Athletics check: {1d20 + athletics}"
-    },
-    "athletics-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "athletics"
-    },
-    "athletics-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "athletics"
-    },
-    "athletics-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "athletics"
-    },
-    "athletics-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "athletics"
-    },
-    "crafting": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "intelligence + (crafting-trained ? 2 + level : 0) + (crafting-expert ? 2 : 0) + (crafting-master ? 2 : 0) + (crafting-legendary ? 2 : 0)",
-      "subtitle": "Int",
-      "roll": "Crafting check: {1d20 + crafting}"
-    },
-    "crafting-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "crafting"
-    },
-    "crafting-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "crafting"
-    },
-    "crafting-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "crafting"
-    },
-    "crafting-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "crafting"
-    },
-    "deception": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "charisma + (deception-trained ? 2 + level : 0) + (deception-expert ? 2 : 0) + (deception-master ? 2 : 0) + (deception-legendary ? 2 : 0)",
-      "subtitle": "Cha",
-      "roll": "Deception check: {1d20 + deception}"
-    },
-    "deception-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "deception"
-    },
-    "deception-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "deception"
-    },
-    "deception-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "deception"
-    },
-    "deception-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "deception"
-    },
-    "diplomacy": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "charisma + (diplomacy-trained ? 2 + level : 0) + (diplomacy-expert ? 2 : 0) + (diplomacy-master ? 2 : 0) + (diplomacy-legendary ? 2 : 0)",
-      "subtitle": "Cha",
-      "roll": "Diplomacy check: {1d20 + diplomacy}"
-    },
-    "diplomacy-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "diplomacy"
-    },
-    "diplomacy-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "diplomacy"
-    },
-    "diplomacy-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "diplomacy"
-    },
-    "diplomacy-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "diplomacy"
-    },
-    "intimidation": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "charisma + (intimidation-trained ? 2 + level : 0) + (intimidation-expert ? 2 : 0) + (intimidation-master ? 2 : 0) + (intimidation-legendary ? 2 : 0)",
-      "subtitle": "Cha",
-      "roll": "Intimidation check: {1d20 + intimidation}"
-    },
-    "intimidation-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "intimidation"
-    },
-    "intimidation-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "intimidation"
-    },
-    "intimidation-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "intimidation"
-    },
-    "intimidation-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "intimidation"
-    },
-    "a-lore": {
-      "value": 3,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "intelligence + (a-lore-trained ? 2 + level : 0) + (a-lore-expert ? 2 : 0) + (a-lore-master ? 2 : 0) + (a-lore-legendary ? 2 : 0)",
-      "subtitle": "Int",
-      "roll": "Lore (A) check: {1d20 + a-lore}"
-    },
-    "a-lore-trained": {
-      "value": true,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "a-lore"
-    },
-    "a-lore-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "a-lore"
-    },
-    "a-lore-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "a-lore"
-    },
-    "a-lore-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "a-lore"
-    },
-    "b-lore": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "intelligence + (b-lore-trained ? 2 + level : 0) + (b-lore-expert ? 2 : 0) + (b-lore-master ? 2 : 0) + (b-lore-legendary ? 2 : 0)",
-      "subtitle": "Int",
-      "roll": "Lore (B) check: {1d20 + b-lore}"
-    },
-    "b-lore-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "b-lore"
-    },
-    "b-lore-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "b-lore"
-    },
-    "b-lore-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "b-lore"
-    },
-    "b-lore-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "b-lore"
-    },
-    "medicine": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "wisdom + (medicine-trained ? 2 + level : 0) + (medicine-expert ? 2 : 0) + (medicine-master ? 2 : 0) + (medicine-legendary ? 2 : 0)",
-      "subtitle": "Wis",
-      "roll": "Medicine check: {1d20 + medicine}"
-    },
-    "medicine-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "medicine"
-    },
-    "medicine-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "medicine"
-    },
-    "medicine-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "medicine"
-    },
-    "medicine-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "medicine"
-    },
-    "nature": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "wisdom + (nature-trained ? 2 + level : 0) + (nature-expert ? 2 : 0) + (nature-master ? 2 : 0) + (nature-legendary ? 2 : 0)",
-      "subtitle": "Wis",
-      "roll": "Nature check: {1d20 + nature}"
-    },
-    "nature-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "nature"
-    },
-    "nature-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "nature"
-    },
-    "nature-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "nature"
-    },
-    "nature-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "nature"
-    },
-    "occultism": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "intelligence + (occultism-trained ? 2 + level : 0) + (occultism-expert ? 2 : 0) + (occultism-master ? 2 : 0) + (occultism-legendary ? 2 : 0)",
-      "subtitle": "Int",
-      "roll": "Occultism check: {1d20 + occultism}"
-    },
-    "occultism-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "occultism"
-    },
-    "occultism-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "occultism"
-    },
-    "occultism-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "occultism"
-    },
-    "occultism-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "occultism"
-    },
-    "performance": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "charisma + (performance-trained ? 2 + level : 0) + (performance-expert ? 2 : 0) + (performance-master ? 2 : 0) + (performance-legendary ? 2 : 0)",
-      "subtitle": "Cha",
-      "roll": "Performance check: {1d20 + performance}"
-    },
-    "performance-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "performance"
-    },
-    "performance-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "performance"
-    },
-    "performance-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "performance"
-    },
-    "performance-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "performance"
-    },
-    "religion": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "wisdom + (religion-trained ? 2 + level : 0) + (religion-expert ? 2 : 0) + (religion-master ? 2 : 0) + (religion-legendary ? 2 : 0)",
-      "subtitle": "Wis",
-      "roll": "Religion check: {1d20 + religion}"
-    },
-    "religion-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "religion"
-    },
-    "religion-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "religion"
-    },
-    "religion-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "religion"
-    },
-    "religion-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "religion"
-    },
-    "society": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "intelligence + (society-trained ? 2 + level : 0) + (society-expert ? 2 : 0) + (society-master ? 2 : 0) + (society-legendary ? 2 : 0)",
-      "subtitle": "Int",
-      "roll": "Society check: {1d20 + society}"
-    },
-    "society-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "society"
-    },
-    "society-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "society"
-    },
-    "society-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "society"
-    },
-    "society-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "society"
-    },
-    "stealth": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "dexterity + (stealth-trained ? 2 + level : 0) + (stealth-expert ? 2 : 0) + (stealth-master ? 2 : 0) + (stealth-legendary ? 2 : 0)",
-      "subtitle": "Dex",
-      "roll": "Stealth check: {1d20 + stealth}"
-    },
-    "stealth-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "stealth"
-    },
-    "stealth-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "stealth"
-    },
-    "stealth-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "stealth"
-    },
-    "stealth-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "stealth"
-    },
-    "survival": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "wisdom + (survival-trained ? 2 + level : 0) + (survival-expert ? 2 : 0) + (survival-master ? 2 : 0) + (survival-legendary ? 2 : 0)",
-      "subtitle": "Wis",
-      "roll": "Survival check: {1d20 + survival}"
-    },
-    "survival-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "survival"
-    },
-    "survival-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "survival"
-    },
-    "survival-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "survival"
-    },
-    "survival-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "survival"
-    },
-    "thievery": {
-      "value": 0,
-      "type": "skill4",
-      "section": "skills",
-      "expression": "dexterity + (thievery-trained ? 2 + level : 0) + (thievery-expert ? 2 : 0) + (thievery-master ? 2 : 0) + (thievery-legendary ? 2 : 0)",
-      "subtitle": "Dex",
-      "roll": "Thievery check: {1d20 + thievery}"
-    },
-    "thievery-trained": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "thievery"
-    },
-    "thievery-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "thievery"
-    },
-    "thievery-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "thievery"
-    },
-    "thievery-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "thievery"
-    },
-    "fortitude": {
-      "value": 3,
-      "type": "skill4",
-      "section": "saving-throws",
-      "expression": "level + constitution + (fortitude-trained ? 2 : 0) + (fortitude-expert ? 2 : 0) + (fortitude-master ? 2 : 0) + (fortitude-legendary ? 2 : 0)",
-      "subtitle": "",
-      "roll": "Fortitude Saving Throw: {1d20 + fortitude}"
-    },
-    "fortitude-trained": {
-      "value": true,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "fortitude"
-    },
-    "fortitude-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "fortitude"
-    },
-    "fortitude-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "fortitude"
-    },
-    "fortitude-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "fortitude"
-    },
-    "reflex": {
-      "value": 3,
-      "type": "skill4",
-      "section": "saving-throws",
-      "expression": "level + dexterity + (reflex-trained ? 2 : 0) + (reflex-expert ? 2 : 0) + (reflex-master ? 2 : 0) + (reflex-legendary ? 2 : 0)",
-      "subtitle": "",
-      "roll": "Reflex Saving Throw: {1d20 + reflex}"
-    },
-    "reflex-trained": {
-      "value": true,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "reflex"
-    },
-    "reflex-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "reflex"
-    },
-    "reflex-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "reflex"
-    },
-    "reflex-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "reflex"
-    },
-    "will": {
-      "value": 3,
-      "type": "skill4",
-      "section": "saving-throws",
-      "expression": "level + wisdom + (will-trained ? 2 : 0) + (will-expert ? 2 : 0) + (will-master ? 2 : 0) + (will-legendary ? 2 : 0)",
-      "subtitle": "",
-      "roll": "Will Saving Throw: {1d20 + will}"
-    },
-    "will-trained": {
-      "value": true,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "will"
-    },
-    "will-expert": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "will"
-    },
-    "will-master": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "will"
-    },
-    "will-legendary": {
-      "value": false,
-      "type": "checkbox",
-      "hidden": true,
-      "parent": "will"
-    }
-  },
-  "info": {
-    "description": "",
-    "notes": "",
-    "sections": [
-      {
-        "name": "hero",
-        "position": "left",
-        "tab": 1,
-        "savedMessages": false
-      },
-      {
-        "name": "abilities",
-        "position": "left",
-        "tab": 1
-      },
-      {
-        "name": "info",
-        "position": "left",
-        "tab": 1
-      },
-      {
-        "name": "shield",
-        "position": "left",
-        "tab": 1,
-        "savedMessages": false
-      },
-      {
-        "name": "saving-throws",
-        "position": "right",
-        "tab": 2
-      },
-      {
-        "name": "perception",
-        "position": "right",
-        "tab": 2,
-        "savedMessages": false
-      },
-      {
-        "name": "skills",
-        "position": "right",
-        "tab": 2
-      },
-      {
-        "name": "details",
-        "position": "left",
-        "tab": 3
-      },
-      {
-        "name": "actions",
-        "position": "bottom",
-        "tab": 4,
-        "savedMessages": true
-      },
-      {
-        "name": "spells",
-        "position": "bottom",
-        "tab": 4,
-        "savedMessages": true
-      }
-    ]
-  },
-  "appearances": [],
-  "savedMessages": [
+  "properties": [
     {
-      "name": "example-melee-attack",
-      "message": "◆ Strike - Weapon Name\nTo Hit: {1d20 + trained-proficiency + strength}\nDamage: {1d6 + strength} slashing",
-      "section": "actions"
+      "id": 408997,
+      "parentId": 408996,
+      "type": "number",
+      "data": {},
+      "name": "intelligence-score",
+      "value": 10,
+      "rank": -9,
+      "characterId": 211408
     },
     {
+      "id": 408986,
+      "parentId": 408985,
+      "type": "number",
+      "data": {},
+      "name": "armor-class",
+      "value": 10,
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 408987,
+      "parentId": 408985,
+      "type": "health",
+      "data": {},
+      "name": "hit-points",
+      "value": 10,
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 408988,
+      "parentId": 408987,
+      "type": "number",
+      "data": {},
+      "name": "hit-points-temporary",
+      "local": true,
+      "value": "",
+      "rank": 104,
+      "characterId": 211408
+    },
+    {
+      "id": 408989,
+      "parentId": 408987,
+      "type": "number",
+      "data": {},
+      "name": "hit-points-maximum",
+      "value": 10,
+      "rank": 102,
+      "characterId": 211408
+    },
+    {
+      "id": 408990,
+      "parentId": 408985,
+      "type": "checkboxes",
+      "data": {},
+      "name": "hero-points",
+      "value": 1,
+      "rank": 0,
+      "characterId": 211408
+    },
+    {
+      "id": 408955,
+      "parentId": null,
+      "type": "tab-section",
+      "data": {},
+      "value": "Actions",
+      "rank": -12,
+      "characterId": 211408
+    },
+    {
+      "id": 408956,
+      "parentId": 408955,
+      "type": "filter-list",
+      "data": {},
+      "value": "",
+      "rank": -14,
+      "characterId": 211408
+    },
+    {
+      "id": 408957,
+      "parentId": 408956,
+      "type": "message",
+      "data": {},
       "name": "example-ranged-attack",
-      "message": "◆ Strike - Weapon Name\nTo Hit: {1d20 + trained-proficiency + dexterity}\nDamage: {1d6 + strength} piercing",
-      "section": "actions"
+      "icon": "/images/message.png",
+      "value": "",
+      "rank": -10,
+      "message": "◆ Strike - Weapon Name\\nTo Hit: {1d20 + trained-proficiency + dexterity}\\nDamage: {1d6 + strength} piercing",
+      "characterId": 211408
     },
     {
+      "id": 408958,
+      "parentId": 408956,
+      "type": "message",
+      "data": {},
       "name": "example-reaction",
+      "icon": "/images/message.png",
+      "value": "",
+      "rank": -9,
       "message": "↶ Example Reaction",
-      "section": "actions"
+      "characterId": 211408
     },
     {
+      "id": 408959,
+      "parentId": 408956,
+      "type": "message",
+      "data": {},
       "name": "example-free-action",
+      "icon": "/images/message.png",
+      "value": "",
+      "rank": -8,
       "message": "◇ Example Free Action",
-      "section": "actions"
+      "characterId": 211408
     },
     {
+      "id": 408960,
+      "parentId": 408956,
+      "type": "message",
+      "data": {},
+      "name": "example-melee-attack",
+      "icon": "/images/message.png",
+      "value": "",
+      "rank": -11,
+      "message": "◆ Strike - Weapon Name\\nTo Hit: {1d20 + trained-proficiency + strength}\\nDamage: {1d6 + strength} slashing",
+      "characterId": 211408
+    },
+    {
+      "id": 408961,
+      "parentId": null,
+      "type": "tab-section",
+      "data": {},
+      "value": "Character",
+      "rank": -16,
+      "characterId": 211408
+    },
+    {
+      "id": 408962,
+      "parentId": 408961,
+      "type": "title-section",
+      "data": {},
+      "value": "Saving Throws",
+      "rank": -16,
+      "characterId": 211408
+    },
+    {
+      "id": 408964,
+      "parentId": 408963,
+      "type": "checkbox",
+      "data": {},
+      "name": "fortitude-trained",
+      "value": true,
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 408965,
+      "parentId": 408963,
+      "type": "checkbox",
+      "data": {},
+      "name": "fortitude-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 408966,
+      "parentId": 408963,
+      "type": "checkbox",
+      "data": {},
+      "name": "fortitude-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 408967,
+      "parentId": 408963,
+      "type": "checkbox",
+      "data": {},
+      "name": "fortitude-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 408968,
+      "parentId": 408962,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Dex"
+      },
+      "name": "reflex",
+      "value": 3,
+      "rank": 1,
+      "message": "Reflex Saving Throw: {1d20 + reflex}",
+      "formula": "level + dexterity + (reflex-trained ? 2 : 0) + (reflex-expert ? 2 : 0) + (reflex-master ? 2 : 0) + (reflex-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 408969,
+      "parentId": 408968,
+      "type": "checkbox",
+      "data": {},
+      "name": "reflex-trained",
+      "value": true,
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 408970,
+      "parentId": 408968,
+      "type": "checkbox",
+      "data": {},
+      "name": "reflex-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 408971,
+      "parentId": 408968,
+      "type": "checkbox",
+      "data": {},
+      "name": "reflex-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 408972,
+      "parentId": 408968,
+      "type": "checkbox",
+      "data": {},
+      "name": "reflex-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 408973,
+      "parentId": 408962,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "will",
+      "value": 3,
+      "rank": 2,
+      "message": "Will Saving Throw: {1d20 + will}",
+      "formula": "level + wisdom + (will-trained ? 2 : 0) + (will-expert ? 2 : 0) + (will-master ? 2 : 0) + (will-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 408974,
+      "parentId": 408973,
+      "type": "checkbox",
+      "data": {},
+      "name": "will-trained",
+      "value": true,
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 408975,
+      "parentId": 408973,
+      "type": "checkbox",
+      "data": {},
+      "name": "will-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 408976,
+      "parentId": 408973,
+      "type": "checkbox",
+      "data": {},
+      "name": "will-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 408977,
+      "parentId": 408973,
+      "type": "checkbox",
+      "data": {},
+      "name": "will-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 408978,
+      "parentId": 408961,
+      "type": "title-section",
+      "data": {},
+      "value": "Perception",
+      "rank": -15,
+      "characterId": 211408
+    },
+    {
+      "id": 408979,
+      "parentId": 408978,
+      "type": "text",
+      "data": {},
+      "name": "senses",
+      "value": "",
+      "rank": 90,
+      "characterId": 211408
+    },
+    {
+      "id": 408980,
+      "parentId": 408978,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "perception",
+      "value": 3,
+      "rank": 87,
+      "message": "Perception check: {1d20 + perception}",
+      "formula": "wisdom + (perception-trained ? 2 + level : 0) + (perception-expert ? 2 : 0) + (perception-master ? 2 : 0) + (perception-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 408981,
+      "parentId": 408980,
+      "type": "checkbox",
+      "data": {},
+      "name": "perception-trained",
+      "value": true,
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 408982,
+      "parentId": 408980,
+      "type": "checkbox",
+      "data": {},
+      "name": "perception-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 408983,
+      "parentId": 408980,
+      "type": "checkbox",
+      "data": {},
+      "name": "perception-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 408984,
+      "parentId": 408980,
+      "type": "checkbox",
+      "data": {},
+      "name": "perception-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 408985,
+      "parentId": 408961,
+      "type": "title-section",
+      "data": {},
+      "value": "Hero",
+      "rank": -20,
+      "characterId": 211408
+    },
+    {
+      "id": 408991,
+      "parentId": 408990,
+      "type": "number",
+      "data": {},
+      "name": "hero-points-max",
+      "value": 3,
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 408992,
+      "parentId": 408985,
+      "type": "number",
+      "data": {},
+      "name": "initiative",
+      "value": 3,
+      "rank": 1,
+      "message": "!r initiative = 1d20 + perception",
+      "formula": "perception",
+      "characterId": 211408
+    },
+    {
+      "id": 408993,
+      "parentId": 408961,
+      "type": "title-section",
+      "data": {},
+      "value": "Abilities",
+      "rank": -18,
+      "characterId": 211408
+    },
+    {
+      "id": 408994,
+      "parentId": 408993,
+      "type": "ability",
+      "data": {},
+      "name": "constitution",
+      "value": 0,
+      "rank": -12,
+      "message": "Constitution check: {1d20 + constitution}",
+      "formula": "floor ((constitution-score - 10) / 2)",
+      "characterId": 211408
+    },
+    {
+      "id": 408995,
+      "parentId": 408994,
+      "type": "number",
+      "data": {},
+      "name": "constitution-score",
+      "value": 10,
+      "rank": -11,
+      "characterId": 211408
+    },
+    {
+      "id": 408996,
+      "parentId": 408993,
+      "type": "ability",
+      "data": {},
+      "name": "intelligence",
+      "value": 0,
+      "rank": -10,
+      "message": "Intelligence check: {1d20 + intelligence}",
+      "formula": "floor ((intelligence-score - 10) / 2)",
+      "characterId": 211408
+    },
+    {
+      "id": 408999,
+      "parentId": 408998,
+      "type": "number",
+      "data": {},
+      "name": "wisdom-score",
+      "value": 10,
+      "rank": -2,
+      "characterId": 211408
+    },
+    {
+      "id": 409000,
+      "parentId": 408993,
+      "type": "ability",
+      "data": {},
+      "name": "charisma",
+      "value": 0,
+      "rank": -1,
+      "message": "Charisma check: {1d20 + charisma}",
+      "formula": "floor ((charisma-score - 10) / 2)",
+      "characterId": 211408
+    },
+    {
+      "id": 409001,
+      "parentId": 409000,
+      "type": "number",
+      "data": {},
+      "name": "charisma-score",
+      "value": 10,
+      "rank": 0,
+      "characterId": 211408
+    },
+    {
+      "id": 409002,
+      "parentId": 408993,
+      "type": "ability",
+      "data": {},
+      "name": "strength",
+      "value": 0,
+      "rank": -17,
+      "message": "Strength check: {1d20 + strength}",
+      "formula": "floor ((strength-score - 10) / 2)",
+      "characterId": 211408
+    },
+    {
+      "id": 409003,
+      "parentId": 409002,
+      "type": "number",
+      "data": {},
+      "name": "strength-score",
+      "value": 10,
+      "rank": -15,
+      "characterId": 211408
+    },
+    {
+      "id": 409004,
+      "parentId": 408993,
+      "type": "ability",
+      "data": {},
+      "name": "dexterity",
+      "value": 0,
+      "rank": -14,
+      "message": "Dexterity check: {1d20 + dexterity}",
+      "formula": "floor ((dexterity-score - 10) / 2)",
+      "characterId": 211408
+    },
+    {
+      "id": 409005,
+      "parentId": 409004,
+      "type": "number",
+      "data": {},
+      "name": "dexterity-score",
+      "value": 10,
+      "rank": -13,
+      "characterId": 211408
+    },
+    {
+      "id": 409006,
+      "parentId": 408961,
+      "type": "title-section",
+      "data": {},
+      "value": "Skills",
+      "rank": -14,
+      "characterId": 211408
+    },
+    {
+      "id": 409007,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Dex"
+      },
+      "name": "acrobatics",
+      "value": 0,
+      "rank": -1,
+      "message": "Acrobatics check: {1d20 + acrobatics}",
+      "formula": "dexterity + (acrobatics-trained ? 2 + level : 0) + (acrobatics-expert ? 2 : 0) + (acrobatics-master ? 2 : 0) + (acrobatics-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409008,
+      "parentId": 409007,
+      "type": "checkbox",
+      "data": {},
+      "name": "acrobatics-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409009,
+      "parentId": 409007,
+      "type": "checkbox",
+      "data": {},
+      "name": "acrobatics-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409010,
+      "parentId": 409007,
+      "type": "checkbox",
+      "data": {},
+      "name": "acrobatics-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409011,
+      "parentId": 409007,
+      "type": "checkbox",
+      "data": {},
+      "name": "acrobatics-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409013,
+      "parentId": 409012,
+      "type": "checkbox",
+      "data": {},
+      "name": "deception-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409014,
+      "parentId": 409012,
+      "type": "checkbox",
+      "data": {},
+      "name": "deception-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409015,
+      "parentId": 409012,
+      "type": "checkbox",
+      "data": {},
+      "name": "deception-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409016,
+      "parentId": 409012,
+      "type": "checkbox",
+      "data": {},
+      "name": "deception-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409017,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Cha"
+      },
+      "name": "diplomacy",
+      "value": 0,
+      "rank": 4,
+      "message": "Diplomacy check: {1d20 + diplomacy}",
+      "formula": "charisma + (diplomacy-trained ? 2 + level : 0) + (diplomacy-expert ? 2 : 0) + (diplomacy-master ? 2 : 0) + (diplomacy-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409018,
+      "parentId": 409017,
+      "type": "checkbox",
+      "data": {},
+      "name": "diplomacy-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409019,
+      "parentId": 409017,
+      "type": "checkbox",
+      "data": {},
+      "name": "diplomacy-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409020,
+      "parentId": 409017,
+      "type": "checkbox",
+      "data": {},
+      "name": "diplomacy-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409021,
+      "parentId": 409017,
+      "type": "checkbox",
+      "data": {},
+      "name": "diplomacy-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409022,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "a-lore",
+      "value": 0,
+      "rank": 6,
+      "message": "Lore (A) check: {1d20 + a-lore}",
+      "formula": "intelligence + (a-lore-trained ? 2 + level : 0) + (a-lore-expert ? 2 : 0) + (a-lore-master ? 2 : 0) + (a-lore-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409023,
+      "parentId": 409022,
+      "type": "checkbox",
+      "data": {},
+      "name": "a-lore-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409024,
+      "parentId": 409022,
+      "type": "checkbox",
+      "data": {},
+      "name": "a-lore-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409025,
+      "parentId": 409022,
+      "type": "checkbox",
+      "data": {},
+      "name": "a-lore-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409026,
+      "parentId": 409022,
+      "type": "checkbox",
+      "data": {},
+      "name": "a-lore-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409027,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "b-lore",
+      "value": 0,
+      "rank": 7,
+      "message": "Lore (B) check: {1d20 + b-lore}",
+      "formula": "intelligence + (b-lore-trained ? 2 + level : 0) + (b-lore-expert ? 2 : 0) + (b-lore-master ? 2 : 0) + (b-lore-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409028,
+      "parentId": 409027,
+      "type": "checkbox",
+      "data": {},
+      "name": "b-lore-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409029,
+      "parentId": 409027,
+      "type": "checkbox",
+      "data": {},
+      "name": "b-lore-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409030,
+      "parentId": 409027,
+      "type": "checkbox",
+      "data": {},
+      "name": "b-lore-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409031,
+      "parentId": 409027,
+      "type": "checkbox",
+      "data": {},
+      "name": "b-lore-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409033,
+      "parentId": 409032,
+      "type": "checkbox",
+      "data": {},
+      "name": "medicine-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409034,
+      "parentId": 409032,
+      "type": "checkbox",
+      "data": {},
+      "name": "medicine-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409035,
+      "parentId": 409032,
+      "type": "checkbox",
+      "data": {},
+      "name": "medicine-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409036,
+      "parentId": 409032,
+      "type": "checkbox",
+      "data": {},
+      "name": "medicine-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409037,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "nature",
+      "value": 0,
+      "rank": 9,
+      "message": "Nature check: {1d20 + nature}",
+      "formula": "wisdom + (nature-trained ? 2 + level : 0) + (nature-expert ? 2 : 0) + (nature-master ? 2 : 0) + (nature-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409038,
+      "parentId": 409037,
+      "type": "checkbox",
+      "data": {},
+      "name": "nature-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409039,
+      "parentId": 409037,
+      "type": "checkbox",
+      "data": {},
+      "name": "nature-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409040,
+      "parentId": 409037,
+      "type": "checkbox",
+      "data": {},
+      "name": "nature-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409041,
+      "parentId": 409037,
+      "type": "checkbox",
+      "data": {},
+      "name": "nature-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409042,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "occultism",
+      "value": 0,
+      "rank": 10,
+      "message": "Occultism check: {1d20 + occultism}",
+      "formula": "intelligence + (occultism-trained ? 2 + level : 0) + (occultism-expert ? 2 : 0) + (occultism-master ? 2 : 0) + (occultism-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409043,
+      "parentId": 409042,
+      "type": "checkbox",
+      "data": {},
+      "name": "occultism-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409044,
+      "parentId": 409042,
+      "type": "checkbox",
+      "data": {},
+      "name": "occultism-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409045,
+      "parentId": 409042,
+      "type": "checkbox",
+      "data": {},
+      "name": "occultism-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409046,
+      "parentId": 409042,
+      "type": "checkbox",
+      "data": {},
+      "name": "occultism-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409047,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "religion",
+      "value": 0,
+      "rank": 12,
+      "message": "Religion check: {1d20 + religion}",
+      "formula": "wisdom + (religion-trained ? 2 + level : 0) + (religion-expert ? 2 : 0) + (religion-master ? 2 : 0) + (religion-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409048,
+      "parentId": 409047,
+      "type": "checkbox",
+      "data": {},
+      "name": "religion-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409049,
+      "parentId": 409047,
+      "type": "checkbox",
+      "data": {},
+      "name": "religion-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409050,
+      "parentId": 409047,
+      "type": "checkbox",
+      "data": {},
+      "name": "religion-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409051,
+      "parentId": 409047,
+      "type": "checkbox",
+      "data": {},
+      "name": "religion-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409052,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "society",
+      "value": 0,
+      "rank": 13,
+      "message": "Society check: {1d20 + society}",
+      "formula": "intelligence + (society-trained ? 2 + level : 0) + (society-expert ? 2 : 0) + (society-master ? 2 : 0) + (society-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409053,
+      "parentId": 409052,
+      "type": "checkbox",
+      "data": {},
+      "name": "society-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409054,
+      "parentId": 409052,
+      "type": "checkbox",
+      "data": {},
+      "name": "society-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409055,
+      "parentId": 409052,
+      "type": "checkbox",
+      "data": {},
+      "name": "society-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409056,
+      "parentId": 409052,
+      "type": "checkbox",
+      "data": {},
+      "name": "society-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409057,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Dex"
+      },
+      "name": "stealth",
+      "value": 0,
+      "rank": 14,
+      "message": "Stealth check: {1d20 + stealth}",
+      "formula": "dexterity + (stealth-trained ? 2 + level : 0) + (stealth-expert ? 2 : 0) + (stealth-master ? 2 : 0) + (stealth-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409058,
+      "parentId": 409057,
+      "type": "checkbox",
+      "data": {},
+      "name": "stealth-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409059,
+      "parentId": 409057,
+      "type": "checkbox",
+      "data": {},
+      "name": "stealth-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409060,
+      "parentId": 409057,
+      "type": "checkbox",
+      "data": {},
+      "name": "stealth-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409061,
+      "parentId": 409057,
+      "type": "checkbox",
+      "data": {},
+      "name": "stealth-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409062,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Dex"
+      },
+      "name": "thievery",
+      "value": 0,
+      "rank": 16,
+      "message": "Thievery check: {1d20 + thievery}",
+      "formula": "dexterity + (thievery-trained ? 2 + level : 0) + (thievery-expert ? 2 : 0) + (thievery-master ? 2 : 0) + (thievery-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409063,
+      "parentId": 409062,
+      "type": "checkbox",
+      "data": {},
+      "name": "thievery-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409064,
+      "parentId": 409062,
+      "type": "checkbox",
+      "data": {},
+      "name": "thievery-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409065,
+      "parentId": 409062,
+      "type": "checkbox",
+      "data": {},
+      "name": "thievery-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409066,
+      "parentId": 409062,
+      "type": "checkbox",
+      "data": {},
+      "name": "thievery-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409067,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "arcana",
+      "value": 0,
+      "rank": 0,
+      "message": "Arcana check: {1d20 + arcana}",
+      "formula": "intelligence + (arcana-trained ? 2 + level : 0) + (arcana-expert ? 2 : 0) + (arcana-master ? 2 : 0) + (arcana-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409068,
+      "parentId": 409067,
+      "type": "checkbox",
+      "data": {},
+      "name": "arcana-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409069,
+      "parentId": 409067,
+      "type": "checkbox",
+      "data": {},
+      "name": "arcana-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409070,
+      "parentId": 409067,
+      "type": "checkbox",
+      "data": {},
+      "name": "arcana-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409071,
+      "parentId": 409067,
+      "type": "checkbox",
+      "data": {},
+      "name": "arcana-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409073,
+      "parentId": 409072,
+      "type": "checkbox",
+      "data": {},
+      "name": "survival-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409074,
+      "parentId": 409072,
+      "type": "checkbox",
+      "data": {},
+      "name": "survival-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409075,
+      "parentId": 409072,
+      "type": "checkbox",
+      "data": {},
+      "name": "survival-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409076,
+      "parentId": 409072,
+      "type": "checkbox",
+      "data": {},
+      "name": "survival-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409077,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Cha"
+      },
+      "name": "performance",
+      "value": 0,
+      "rank": 11,
+      "message": "Performance check: {1d20 + performance}",
+      "formula": "charisma + (performance-trained ? 2 + level : 0) + (performance-expert ? 2 : 0) + (performance-master ? 2 : 0) + (performance-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409078,
+      "parentId": 409077,
+      "type": "checkbox",
+      "data": {},
+      "name": "performance-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409079,
+      "parentId": 409077,
+      "type": "checkbox",
+      "data": {},
+      "name": "performance-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409080,
+      "parentId": 409077,
+      "type": "checkbox",
+      "data": {},
+      "name": "performance-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409081,
+      "parentId": 409077,
+      "type": "checkbox",
+      "data": {},
+      "name": "performance-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409082,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Cha"
+      },
+      "name": "intimidation",
+      "value": 0,
+      "rank": 5,
+      "message": "Intimidation check: {1d20 + intimidation}",
+      "formula": "charisma + (intimidation-trained ? 2 + level : 0) + (intimidation-expert ? 2 : 0) + (intimidation-master ? 2 : 0) + (intimidation-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409083,
+      "parentId": 409082,
+      "type": "checkbox",
+      "data": {},
+      "name": "intimidation-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409084,
+      "parentId": 409082,
+      "type": "checkbox",
+      "data": {},
+      "name": "intimidation-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409085,
+      "parentId": 409082,
+      "type": "checkbox",
+      "data": {},
+      "name": "intimidation-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409086,
+      "parentId": 409082,
+      "type": "checkbox",
+      "data": {},
+      "name": "intimidation-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409087,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "crafting",
+      "value": 0,
+      "rank": 2,
+      "message": "Crafting check: {1d20 + crafting}",
+      "formula": "intelligence + (crafting-trained ? 2 + level : 0) + (crafting-expert ? 2 : 0) + (crafting-master ? 2 : 0) + (crafting-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409088,
+      "parentId": 409087,
+      "type": "checkbox",
+      "data": {},
+      "name": "crafting-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409089,
+      "parentId": 409087,
+      "type": "checkbox",
+      "data": {},
+      "name": "crafting-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409090,
+      "parentId": 409087,
+      "type": "checkbox",
+      "data": {},
+      "name": "crafting-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409091,
+      "parentId": 409087,
+      "type": "checkbox",
+      "data": {},
+      "name": "crafting-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409092,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Str"
+      },
+      "name": "athletics",
+      "value": 0,
+      "rank": 1,
+      "message": "Athletics check: {1d20 + athletics}",
+      "formula": "strength + (athletics-trained ? 2 + level : 0) + (athletics-expert ? 2 : 0) + (athletics-master ? 2 : 0) + (athletics-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409093,
+      "parentId": 409092,
+      "type": "checkbox",
+      "data": {},
+      "name": "athletics-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409094,
+      "parentId": 409092,
+      "type": "checkbox",
+      "data": {},
+      "name": "athletics-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409095,
+      "parentId": 409092,
+      "type": "checkbox",
+      "data": {},
+      "name": "athletics-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409096,
+      "parentId": 409092,
+      "type": "checkbox",
+      "data": {},
+      "name": "athletics-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409097,
+      "parentId": null,
+      "type": "title-section",
+      "data": {},
+      "value": "Skills",
+      "rank": -15,
+      "characterId": 211408
+    },
+    {
+      "id": 409098,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "crafting",
+      "value": 0,
+      "rank": 3,
+      "message": "Crafting check: {1d20 + crafting}",
+      "formula": "intelligence + (crafting-trained ? 2 + level : 0) + (crafting-expert ? 2 : 0) + (crafting-master ? 2 : 0) + (crafting-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409099,
+      "parentId": 409098,
+      "type": "checkbox",
+      "data": {},
+      "name": "crafting-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409100,
+      "parentId": 409098,
+      "type": "checkbox",
+      "data": {},
+      "name": "crafting-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409101,
+      "parentId": 409098,
+      "type": "checkbox",
+      "data": {},
+      "name": "crafting-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409102,
+      "parentId": 409098,
+      "type": "checkbox",
+      "data": {},
+      "name": "crafting-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409103,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Dex"
+      },
+      "name": "acrobatics",
+      "value": 0,
+      "rank": 0,
+      "message": "Acrobatics check: {1d20 + acrobatics}",
+      "formula": "dexterity + (acrobatics-trained ? 2 + level : 0) + (acrobatics-expert ? 2 : 0) + (acrobatics-master ? 2 : 0) + (acrobatics-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409104,
+      "parentId": 409103,
+      "type": "checkbox",
+      "data": {},
+      "name": "acrobatics-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409105,
+      "parentId": 409103,
+      "type": "checkbox",
+      "data": {},
+      "name": "acrobatics-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409106,
+      "parentId": 409103,
+      "type": "checkbox",
+      "data": {},
+      "name": "acrobatics-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409107,
+      "parentId": 409103,
+      "type": "checkbox",
+      "data": {},
+      "name": "acrobatics-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409108,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Cha"
+      },
+      "name": "deception",
+      "value": 0,
+      "rank": 4,
+      "message": "Deception check: {1d20 + deception}",
+      "formula": "charisma + (deception-trained ? 2 + level : 0) + (deception-expert ? 2 : 0) + (deception-master ? 2 : 0) + (deception-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409109,
+      "parentId": 409108,
+      "type": "checkbox",
+      "data": {},
+      "name": "deception-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409110,
+      "parentId": 409108,
+      "type": "checkbox",
+      "data": {},
+      "name": "deception-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409111,
+      "parentId": 409108,
+      "type": "checkbox",
+      "data": {},
+      "name": "deception-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409112,
+      "parentId": 409108,
+      "type": "checkbox",
+      "data": {},
+      "name": "deception-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409113,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "arcana",
+      "value": 0,
+      "rank": 1,
+      "message": "Arcana check: {1d20 + arcana}",
+      "formula": "intelligence + (arcana-trained ? 2 + level : 0) + (arcana-expert ? 2 : 0) + (arcana-master ? 2 : 0) + (arcana-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409114,
+      "parentId": 409113,
+      "type": "checkbox",
+      "data": {},
+      "name": "arcana-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409115,
+      "parentId": 409113,
+      "type": "checkbox",
+      "data": {},
+      "name": "arcana-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409116,
+      "parentId": 409113,
+      "type": "checkbox",
+      "data": {},
+      "name": "arcana-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409117,
+      "parentId": 409113,
+      "type": "checkbox",
+      "data": {},
+      "name": "arcana-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409118,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Cha"
+      },
+      "name": "intimidation",
+      "value": 0,
+      "rank": 6,
+      "message": "Intimidation check: {1d20 + intimidation}",
+      "formula": "charisma + (intimidation-trained ? 2 + level : 0) + (intimidation-expert ? 2 : 0) + (intimidation-master ? 2 : 0) + (intimidation-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409119,
+      "parentId": 409118,
+      "type": "checkbox",
+      "data": {},
+      "name": "intimidation-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409120,
+      "parentId": 409118,
+      "type": "checkbox",
+      "data": {},
+      "name": "intimidation-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409121,
+      "parentId": 409118,
+      "type": "checkbox",
+      "data": {},
+      "name": "intimidation-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409122,
+      "parentId": 409118,
+      "type": "checkbox",
+      "data": {},
+      "name": "intimidation-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409123,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "a-lore",
+      "value": 0,
+      "rank": 7,
+      "message": "Lore (A) check: {1d20 + a-lore}",
+      "formula": "intelligence + (a-lore-trained ? 2 + level : 0) + (a-lore-expert ? 2 : 0) + (a-lore-master ? 2 : 0) + (a-lore-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409124,
+      "parentId": 409123,
+      "type": "checkbox",
+      "data": {},
+      "name": "a-lore-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409125,
+      "parentId": 409123,
+      "type": "checkbox",
+      "data": {},
+      "name": "a-lore-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409126,
+      "parentId": 409123,
+      "type": "checkbox",
+      "data": {},
+      "name": "a-lore-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409127,
+      "parentId": 409123,
+      "type": "checkbox",
+      "data": {},
+      "name": "a-lore-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409128,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "b-lore",
+      "value": 0,
+      "rank": 8,
+      "message": "Lore (B) check: {1d20 + b-lore}",
+      "formula": "intelligence + (b-lore-trained ? 2 + level : 0) + (b-lore-expert ? 2 : 0) + (b-lore-master ? 2 : 0) + (b-lore-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409129,
+      "parentId": 409128,
+      "type": "checkbox",
+      "data": {},
+      "name": "b-lore-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409130,
+      "parentId": 409128,
+      "type": "checkbox",
+      "data": {},
+      "name": "b-lore-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409131,
+      "parentId": 409128,
+      "type": "checkbox",
+      "data": {},
+      "name": "b-lore-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409132,
+      "parentId": 409128,
+      "type": "checkbox",
+      "data": {},
+      "name": "b-lore-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409134,
+      "parentId": 409133,
+      "type": "checkbox",
+      "data": {},
+      "name": "medicine-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409135,
+      "parentId": 409133,
+      "type": "checkbox",
+      "data": {},
+      "name": "medicine-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409136,
+      "parentId": 409133,
+      "type": "checkbox",
+      "data": {},
+      "name": "medicine-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409137,
+      "parentId": 409133,
+      "type": "checkbox",
+      "data": {},
+      "name": "medicine-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409138,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "nature",
+      "value": 0,
+      "rank": 10,
+      "message": "Nature check: {1d20 + nature}",
+      "formula": "wisdom + (nature-trained ? 2 + level : 0) + (nature-expert ? 2 : 0) + (nature-master ? 2 : 0) + (nature-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409139,
+      "parentId": 409138,
+      "type": "checkbox",
+      "data": {},
+      "name": "nature-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409140,
+      "parentId": 409138,
+      "type": "checkbox",
+      "data": {},
+      "name": "nature-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409141,
+      "parentId": 409138,
+      "type": "checkbox",
+      "data": {},
+      "name": "nature-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409142,
+      "parentId": 409138,
+      "type": "checkbox",
+      "data": {},
+      "name": "nature-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409143,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "occultism",
+      "value": 0,
+      "rank": 11,
+      "message": "Occultism check: {1d20 + occultism}",
+      "formula": "intelligence + (occultism-trained ? 2 + level : 0) + (occultism-expert ? 2 : 0) + (occultism-master ? 2 : 0) + (occultism-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409144,
+      "parentId": 409143,
+      "type": "checkbox",
+      "data": {},
+      "name": "occultism-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409145,
+      "parentId": 409143,
+      "type": "checkbox",
+      "data": {},
+      "name": "occultism-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409146,
+      "parentId": 409143,
+      "type": "checkbox",
+      "data": {},
+      "name": "occultism-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409147,
+      "parentId": 409143,
+      "type": "checkbox",
+      "data": {},
+      "name": "occultism-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409148,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Cha"
+      },
+      "name": "performance",
+      "value": 0,
+      "rank": 12,
+      "message": "Performance check: {1d20 + performance}",
+      "formula": "charisma + (performance-trained ? 2 + level : 0) + (performance-expert ? 2 : 0) + (performance-master ? 2 : 0) + (performance-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409149,
+      "parentId": 409148,
+      "type": "checkbox",
+      "data": {},
+      "name": "performance-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409150,
+      "parentId": 409148,
+      "type": "checkbox",
+      "data": {},
+      "name": "performance-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409151,
+      "parentId": 409148,
+      "type": "checkbox",
+      "data": {},
+      "name": "performance-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409152,
+      "parentId": 409148,
+      "type": "checkbox",
+      "data": {},
+      "name": "performance-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409153,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "religion",
+      "value": 0,
+      "rank": 13,
+      "message": "Religion check: {1d20 + religion}",
+      "formula": "wisdom + (religion-trained ? 2 + level : 0) + (religion-expert ? 2 : 0) + (religion-master ? 2 : 0) + (religion-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409154,
+      "parentId": 409153,
+      "type": "checkbox",
+      "data": {},
+      "name": "religion-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409155,
+      "parentId": 409153,
+      "type": "checkbox",
+      "data": {},
+      "name": "religion-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409156,
+      "parentId": 409153,
+      "type": "checkbox",
+      "data": {},
+      "name": "religion-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409157,
+      "parentId": 409153,
+      "type": "checkbox",
+      "data": {},
+      "name": "religion-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409158,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Int"
+      },
+      "name": "society",
+      "value": 0,
+      "rank": 14,
+      "message": "Society check: {1d20 + society}",
+      "formula": "intelligence + (society-trained ? 2 + level : 0) + (society-expert ? 2 : 0) + (society-master ? 2 : 0) + (society-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409159,
+      "parentId": 409158,
+      "type": "checkbox",
+      "data": {},
+      "name": "society-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409160,
+      "parentId": 409158,
+      "type": "checkbox",
+      "data": {},
+      "name": "society-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409161,
+      "parentId": 409158,
+      "type": "checkbox",
+      "data": {},
+      "name": "society-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409162,
+      "parentId": 409158,
+      "type": "checkbox",
+      "data": {},
+      "name": "society-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409163,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "survival",
+      "value": 0,
+      "rank": 16,
+      "message": "Survival check: {1d20 + survival}",
+      "formula": "wisdom + (survival-trained ? 2 + level : 0) + (survival-expert ? 2 : 0) + (survival-master ? 2 : 0) + (survival-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409164,
+      "parentId": 409163,
+      "type": "checkbox",
+      "data": {},
+      "name": "survival-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409165,
+      "parentId": 409163,
+      "type": "checkbox",
+      "data": {},
+      "name": "survival-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409166,
+      "parentId": 409163,
+      "type": "checkbox",
+      "data": {},
+      "name": "survival-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409167,
+      "parentId": 409163,
+      "type": "checkbox",
+      "data": {},
+      "name": "survival-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409168,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Dex"
+      },
+      "name": "thievery",
+      "value": 0,
+      "rank": 17,
+      "message": "Thievery check: {1d20 + thievery}",
+      "formula": "dexterity + (thievery-trained ? 2 + level : 0) + (thievery-expert ? 2 : 0) + (thievery-master ? 2 : 0) + (thievery-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409169,
+      "parentId": 409168,
+      "type": "checkbox",
+      "data": {},
+      "name": "thievery-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409170,
+      "parentId": 409168,
+      "type": "checkbox",
+      "data": {},
+      "name": "thievery-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409171,
+      "parentId": 409168,
+      "type": "checkbox",
+      "data": {},
+      "name": "thievery-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409172,
+      "parentId": 409168,
+      "type": "checkbox",
+      "data": {},
+      "name": "thievery-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409173,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Cha"
+      },
+      "name": "diplomacy",
+      "value": 0,
+      "rank": 5,
+      "message": "Diplomacy check: {1d20 + diplomacy}",
+      "formula": "charisma + (diplomacy-trained ? 2 + level : 0) + (diplomacy-expert ? 2 : 0) + (diplomacy-master ? 2 : 0) + (diplomacy-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409174,
+      "parentId": 409173,
+      "type": "checkbox",
+      "data": {},
+      "name": "diplomacy-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409175,
+      "parentId": 409173,
+      "type": "checkbox",
+      "data": {},
+      "name": "diplomacy-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409176,
+      "parentId": 409173,
+      "type": "checkbox",
+      "data": {},
+      "name": "diplomacy-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409177,
+      "parentId": 409173,
+      "type": "checkbox",
+      "data": {},
+      "name": "diplomacy-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409178,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Str"
+      },
+      "name": "athletics",
+      "value": 0,
+      "rank": 2,
+      "message": "Athletics check: {1d20 + athletics}",
+      "formula": "strength + (athletics-trained ? 2 + level : 0) + (athletics-expert ? 2 : 0) + (athletics-master ? 2 : 0) + (athletics-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409179,
+      "parentId": 409178,
+      "type": "checkbox",
+      "data": {},
+      "name": "athletics-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409180,
+      "parentId": 409178,
+      "type": "checkbox",
+      "data": {},
+      "name": "athletics-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409181,
+      "parentId": 409178,
+      "type": "checkbox",
+      "data": {},
+      "name": "athletics-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409182,
+      "parentId": 409178,
+      "type": "checkbox",
+      "data": {},
+      "name": "athletics-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409183,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Dex"
+      },
+      "name": "stealth",
+      "value": 0,
+      "rank": 15,
+      "message": "Stealth check: {1d20 + stealth}",
+      "formula": "dexterity + (stealth-trained ? 2 + level : 0) + (stealth-expert ? 2 : 0) + (stealth-master ? 2 : 0) + (stealth-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409184,
+      "parentId": 409183,
+      "type": "checkbox",
+      "data": {},
+      "name": "stealth-trained",
+      "value": "",
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409185,
+      "parentId": 409183,
+      "type": "checkbox",
+      "data": {},
+      "name": "stealth-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409186,
+      "parentId": 409183,
+      "type": "checkbox",
+      "data": {},
+      "name": "stealth-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409187,
+      "parentId": 409183,
+      "type": "checkbox",
+      "data": {},
+      "name": "stealth-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409188,
+      "parentId": null,
+      "type": "tab-section",
+      "data": {},
+      "value": "Spells",
+      "rank": -11,
+      "characterId": 211408
+    },
+    {
+      "id": 409189,
+      "parentId": 409188,
+      "type": "number",
+      "data": {},
+      "name": "spell-dc",
+      "value": 13,
+      "rank": -22,
+      "formula": "10 + spell-attack",
+      "characterId": 211408
+    },
+    {
+      "id": 409190,
+      "parentId": 409188,
+      "type": "checkboxes",
+      "data": {},
+      "name": "first-level-spell-slots",
+      "value": "",
+      "rank": -21,
+      "characterId": 211408
+    },
+    {
+      "id": 409191,
+      "parentId": 409190,
+      "type": "number",
+      "data": {},
+      "name": "first-level-spell-slots-max",
+      "value": 2,
+      "rank": 91,
+      "characterId": 211408
+    },
+    {
+      "id": 409192,
+      "parentId": 409188,
+      "type": "filter-list",
+      "data": {},
+      "value": "",
+      "rank": -20,
+      "characterId": 211408
+    },
+    {
+      "id": 409193,
+      "parentId": 409192,
+      "type": "message",
+      "data": {},
       "name": "example-spell-attack",
-      "message": "◆◆ Spell Name\nTo Hit - {1d20 + spell-attack}\nDamage - {1d4 + intelligence} fire",
-      "section": "spells"
+      "icon": "/images/message.png",
+      "value": "",
+      "rank": 0,
+      "message": "◆◆ Spell Name\nTo Hit - {1d20 + spell-attack}\nDamage - {1d4 + charisma} fire",
+      "characterId": 211408
     },
     {
+      "id": 409194,
+      "parentId": 409192,
+      "type": "message",
+      "data": {},
       "name": "example-spell-save",
+      "icon": "/images/message.png",
+      "value": "",
+      "rank": 1,
       "message": "◆◆ Spell Name\nSaving Throw - Basic Reflex DC {spell-dc}\n\nCritical Success - probably nothing happens\nSuccess - maybe something happens\nFailure - good things happen\nCritical Failure - amazing things happen",
-      "section": "spells"
+      "characterId": 211408
+    },
+    {
+      "id": 409195,
+      "parentId": 409188,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Arcane"
+      },
+      "name": "spell-attack",
+      "value": 3,
+      "rank": -23,
+      "formula": "spell-key-ability-modifier + (spell-attack-trained ? 2 + level : 0) + (spell-attack-expert ? 2 : 0) + (spell-attack-master ? 2 : 0) + (spell-attack-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409196,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-attack-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409197,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-attack-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409198,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-attack-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409199,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-key-ability-strength",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409200,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-key-ability-dexterity",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409201,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-key-ability-constitution",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409202,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-key-ability-intelligence",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409203,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-key-ability-wisdom",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409204,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-key-ability-charisma",
+      "value": true,
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409205,
+      "parentId": 409195,
+      "type": "number",
+      "data": {},
+      "name": "spell-key-ability-modifier",
+      "value": 0,
+      "rank": 5,
+      "formula": "(spell-key-ability-strength ? strength : (spell-key-ability-dexterity ? dexterity : (spell-key-ability-constitution ? constitution : (spell-key-ability-intelligence ? intelligence : (spell-key-ability-wisdom ? wisdom : (spell-key-ability-charisma ? charisma : 0))))))",
+      "characterId": 211408
+    },
+    {
+      "id": 409206,
+      "parentId": 409195,
+      "type": "checkbox",
+      "data": {},
+      "name": "spell-attack-trained",
+      "value": true,
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409207,
+      "parentId": null,
+      "type": "tab-section",
+      "data": {},
+      "value": "Details",
+      "rank": -14,
+      "characterId": 211408
+    },
+    {
+      "id": 409208,
+      "parentId": 409207,
+      "type": "title-section",
+      "data": {},
+      "value": "Info",
+      "rank": -16,
+      "characterId": 211408
+    },
+    {
+      "id": 409209,
+      "parentId": 409208,
+      "type": "number",
+      "data": {},
+      "name": "level",
+      "value": 1,
+      "rank": 87,
+      "characterId": 211408
+    },
+    {
+      "id": 409210,
+      "parentId": 409208,
+      "type": "number",
+      "data": {},
+      "name": "speed",
+      "value": 30,
+      "rank": 91,
+      "characterId": 211408
+    },
+    {
+      "id": 409211,
+      "parentId": 409208,
+      "type": "number",
+      "data": {},
+      "name": "passive-perception",
+      "value": 13,
+      "rank": 92,
+      "formula": "10 + perception",
+      "characterId": 211408
+    },
+    {
+      "id": 409212,
+      "parentId": 409208,
+      "type": "number",
+      "data": {},
+      "name": "passive-stealth",
+      "value": 10,
+      "rank": 93,
+      "formula": "10 + stealth",
+      "characterId": 211408
+    },
+    {
+      "id": 409213,
+      "parentId": 409241,
+      "type": "number",
+      "data": {},
+      "name": "trained-proficiency",
+      "value": 3,
+      "rank": 0,
+      "formula": "level + 2",
+      "characterId": 211408
+    },
+    {
+      "id": 409214,
+      "parentId": 409241,
+      "type": "number",
+      "data": {},
+      "name": "expert-proficiency",
+      "value": 5,
+      "rank": 1,
+      "formula": "trained-proficiency + 2",
+      "characterId": 211408
+    },
+    {
+      "id": 409215,
+      "parentId": 409241,
+      "type": "number",
+      "data": {},
+      "name": "master-proficiency",
+      "value": 7,
+      "rank": 2,
+      "formula": "expert-proficiency + 2",
+      "characterId": 211408
+    },
+    {
+      "id": 409216,
+      "parentId": 409241,
+      "type": "number",
+      "data": {},
+      "name": "legendary-proficiency",
+      "value": 9,
+      "rank": 3,
+      "formula": "master-proficiency + 2",
+      "characterId": 211408
+    },
+    {
+      "id": 409217,
+      "parentId": 409208,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wizard"
+      },
+      "name": "class-dc",
+      "value": 13,
+      "rank": 97,
+      "formula": "10 + key-ability-modifier + (class-dc-trained ? 2 + level : 0) + (class-dc-expert ? 2 : 0) + (class-dc-master ? 2: 0) + (class-dc-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409218,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "class-dc-trained",
+      "value": true,
+      "rank": 1,
+      "characterId": 211408
+    },
+    {
+      "id": 409219,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "class-dc-expert",
+      "value": "",
+      "rank": 2,
+      "characterId": 211408
+    },
+    {
+      "id": 409220,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "class-dc-master",
+      "value": "",
+      "rank": 3,
+      "characterId": 211408
+    },
+    {
+      "id": 409221,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "class-dc-legendary",
+      "value": "",
+      "rank": 4,
+      "characterId": 211408
+    },
+    {
+      "id": 409222,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "key-ability-strength",
+      "value": true,
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409223,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "key-ability-dexterity",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409224,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "key-ability-constitution",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409225,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "key-ability-intelligence",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409226,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "key-ability-wisdom",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409227,
+      "parentId": 409217,
+      "type": "checkbox",
+      "data": {},
+      "name": "key-ability-charisma",
+      "value": "",
+      "rank": 5,
+      "characterId": 211408
+    },
+    {
+      "id": 409228,
+      "parentId": 409217,
+      "type": "number",
+      "data": {},
+      "name": "key-ability-modifier",
+      "value": 0,
+      "rank": 5,
+      "formula": "(key-ability-strength ? strength : (key-ability-dexterity ? dexterity : (key-ability-constitution ? constitution : (key-ability-intelligence ? intelligence : (key-ability-wisdom ? wisdom : (key-ability-charisma ? charisma : 0))))))",
+      "characterId": 211408
+    },
+    {
+      "id": 409229,
+      "parentId": 409207,
+      "type": "title-section",
+      "data": {},
+      "value": "Details",
+      "rank": -13,
+      "characterId": 211408
+    },
+    {
+      "id": 409230,
+      "parentId": 409229,
+      "type": "text",
+      "data": {},
+      "name": "class",
+      "value": "",
+      "rank": -12,
+      "characterId": 211408
+    },
+    {
+      "id": 409231,
+      "parentId": 409229,
+      "type": "number",
+      "data": {},
+      "name": "experience",
+      "value": "",
+      "rank": -16,
+      "characterId": 211408
+    },
+    {
+      "id": 409232,
+      "parentId": 409229,
+      "type": "appearance",
+      "data": {
+        "appearances": []
+      },
+      "value": "",
+      "rank": -18,
+      "characterId": 211408
+    },
+    {
+      "id": 409233,
+      "parentId": 409229,
+      "type": "text",
+      "data": {},
+      "name": "size",
+      "value": "",
+      "rank": -11,
+      "characterId": 211408
+    },
+    {
+      "id": 409234,
+      "parentId": 409229,
+      "type": "text",
+      "data": {},
+      "name": "alignment",
+      "value": "",
+      "rank": -10,
+      "characterId": 211408
+    },
+    {
+      "id": 409235,
+      "parentId": 409229,
+      "type": "text",
+      "data": {},
+      "name": "traits",
+      "value": "",
+      "rank": -9,
+      "characterId": 211408
+    },
+    {
+      "id": 409236,
+      "parentId": 409229,
+      "type": "text",
+      "data": {},
+      "name": "deity",
+      "value": "",
+      "rank": -8,
+      "characterId": 211408
+    },
+    {
+      "id": 409237,
+      "parentId": 409229,
+      "type": "text",
+      "data": {},
+      "name": "languages",
+      "value": "",
+      "rank": -7,
+      "characterId": 211408
+    },
+    {
+      "id": 409238,
+      "parentId": 409229,
+      "type": "text",
+      "data": {},
+      "name": "ancestry",
+      "value": "",
+      "rank": -14,
+      "characterId": 211408
+    },
+    {
+      "id": 409239,
+      "parentId": 409229,
+      "type": "text",
+      "data": {},
+      "name": "background",
+      "value": "",
+      "rank": -13,
+      "characterId": 211408
+    },
+    {
+      "id": 408998,
+      "parentId": 408993,
+      "type": "ability",
+      "data": {},
+      "name": "wisdom",
+      "value": 0,
+      "rank": -3,
+      "message": "Wisdom check: {1d20 + wisdom}",
+      "formula": "floor ((wisdom-score - 10) / 2)",
+      "characterId": 211408
+    },
+    {
+      "id": 409032,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "medicine",
+      "value": 0,
+      "rank": 8,
+      "message": "Medicine check: {1d20 + medicine}",
+      "formula": "wisdom + (medicine-trained ? 2 + level : 0) + (medicine-expert ? 2 : 0) + (medicine-master ? 2 : 0) + (medicine-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409072,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "survival",
+      "value": 0,
+      "rank": 15,
+      "message": "Survival check: {1d20 + survival}",
+      "formula": "wisdom + (survival-trained ? 2 + level : 0) + (survival-expert ? 2 : 0) + (survival-master ? 2 : 0) + (survival-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409133,
+      "parentId": 409097,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Wis"
+      },
+      "name": "medicine",
+      "value": 0,
+      "rank": 9,
+      "message": "Medicine check: {1d20 + medicine}",
+      "formula": "wisdom + (medicine-trained ? 2 + level : 0) + (medicine-expert ? 2 : 0) + (medicine-master ? 2 : 0) + (medicine-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 408963,
+      "parentId": 408962,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Con"
+      },
+      "name": "fortitude",
+      "value": 3,
+      "rank": 0,
+      "message": "Fortitude Saving Throw: {1d20 + fortitude}",
+      "formula": "level + constitution + (fortitude-trained ? 2 : 0) + (fortitude-expert ? 2 : 0) + (fortitude-master ? 2 : 0) + (fortitude-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409012,
+      "parentId": 409006,
+      "type": "skill-4",
+      "data": {
+        "subtitle": "Cha"
+      },
+      "name": "deception",
+      "value": 0,
+      "rank": 3,
+      "message": "Deception check: {1d20 + deception}",
+      "formula": "charisma + (deception-trained ? 2 + level : 0) + (deception-expert ? 2 : 0) + (deception-master ? 2 : 0) + (deception-legendary ? 2 : 0)",
+      "characterId": 211408
+    },
+    {
+      "id": 409241,
+      "parentId": 409207,
+      "type": "title-section",
+      "data": {},
+      "value": "Proficiencies",
+      "rank": -12,
+      "characterId": 211408,
+      "private": true
     }
-  ]
+  ],
+  "private": false,
+  "type": "tableplop-character-v2"
 }
